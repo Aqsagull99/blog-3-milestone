@@ -11,7 +11,7 @@ const Footer = () => {
         <div>
           <h2 className="text-2xl font-semibold text-white mb-4">About Blogosphere</h2>
           <p className="text-sm leading-relaxed">
-            Blogosphere is your go-to platform for discovering insightful articles, practical tips, and inspiring stories. Whether you're here to learn, share, or explore, we've got something for everyone. Dive into the world of knowledge and creativity!
+            Blogosphere is your go-to platform for discovering insightful articles practical tips and inspiring stories. Whether youre here to learn share or explore we have  got something for everyone. Dive into the world of knowledge and creativity!
           </p>
         </div>
 

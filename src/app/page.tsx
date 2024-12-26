@@ -19,7 +19,7 @@ const blogs = [
   { id: 10, title: "Deploying Next.js Applications", image: "/home/node1.png" },
 ];
 
-export default async function HomePage() {
+export default  function HomePage() {
   
   return (
     <div className="flex flex-col justify-center items-center min-h-screen ">
@@ -68,6 +68,8 @@ export default async function HomePage() {
     </div>
   );
 }
+
+
 
 
 

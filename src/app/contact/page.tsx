@@ -23,7 +23,7 @@ const ContactSection = () => {
           Get in Touch <span className="text-purple-600">With Us</span>
         </h2>
         <p className="text-sm leading-relaxed mb-10 text-white font-extralight">
-          Have questions or feedback? Reach out to us—we'd love to hear from you! Fill out the form below.
+          Have questions or feedback Reach out to us—wed love to hear from you! Fill out the form below.
         </p>
         <form
           onSubmit={handleSubmit}

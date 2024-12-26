@@ -1,12 +1,14 @@
 "use client";
 
+import Image from "next/image";
+
 const AboutSection = () => {
   return (
     <section className="py-20  text-white">
       <div className="container mx-auto px-6 lg:flex lg:items-center lg:justify-between">
         {/* Image Content */}
         <div className="lg:w-1/2">
-          <img
+          <Image
             src={"/home/res1.png"}
             alt="About Us"
             height={200}
@@ -47,3 +49,5 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+
+
