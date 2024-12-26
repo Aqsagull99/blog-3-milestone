@@ -199,7 +199,7 @@ const posts: { [key: number]: Post } = {
               It eliminates the need for writing custom CSS by using pre-defined classes. 
               Developers can quickly build modern, responsive designs with its flexibility. 
               Tailwind's configuration options allow extensive customization.`,
-    image: '/home/tail1.png',
+    image: '/post/tail1.png',
     category: 'CSS Frameworks',
     excerpt: 'A guide to creating responsive and customizable designs using Tailwind CSS.',
     author: { name: 'Aqsa Gull', profileImage: '/avatar/men2.png' },
