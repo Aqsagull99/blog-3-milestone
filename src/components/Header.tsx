@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,16 +16,25 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-800 text-white p-4 shadow-lg">
+    <header className=" text-white p-4 z-50 relative">
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo or Brand Name */}
-        <div className="text-lg font-semibold font-serif">My Blog</div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-lg font-semibold font-serif"
+        >
+          My Blog
+        </motion.div>
 
         {/* Toggle button for small screens */}
-        <div className="md:hidden">
-          <button
+        <div className="md:hidden relative flex items-center">
+          <motion.button
             onClick={toggleMenu}
-            className="text-white focus:outline-none"
+            className="text-white focus:outline-none bg-gray-700 rounded-full p-2"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           >
             <svg
               className="w-6 h-6"
@@ -40,224 +50,128 @@ const Header = () => {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </button>
+          </motion.button>
         </div>
 
         {/* Nav menu for desktop */}
         <nav className="hidden md:flex md:items-center md:space-x-6">
-          <ul className="flex gap-6 text-sm md:text-base font-serif">
+          <motion.ul
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex gap-6 text-sm md:text-base font-serif"
+          >
             <li>
               <Link
                 href="/"
-                className="hover:text-yellow-300 transition-colors duration-200"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
                 Home
               </Link>
             </li>
             <li>
               <Link
-                href="/1"
-                className="hover:text-yellow-300 transition-colors duration-200"
+                href="/about"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                First Blog
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/2"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                {" "}
-                Second Blog
+                About
               </Link>
             </li>
             <li>
               <Link
-                href="/3"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
+                href="/blog/1"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                Third Blog
+                Blogs
               </Link>
             </li>
             <li>
               <Link
-                href="/4"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
+                href="/contact"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                Fourth Blog
+                Contact
               </Link>
             </li>
-            <li>
-              <Link
-                href="/5"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Five Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/6"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Six Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/7"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Seven Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/8"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Eight Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/9"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Nine Blog{" "}
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/10"
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Ten Blog
-              </Link>
-            </li>
-          </ul>
+          </motion.ul>
         </nav>
       </div>
 
       {/* Mobile nav overlay */}
       {isMenuOpen && (
-        <nav className="fixed inset-0 bg-gray-800 bg-opacity-90 z-50 flex justify-center items-center md:hidden">
-          <ul className="flex flex-col items-center gap-4 text-lg font-serif">
+        <motion.nav
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5 }}
+          className="fixed top-0 left-0 w-full bg-slate-800 bg-opacity-95 z-50 flex flex-col items-center justify-center md:hidden"
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeMenu}
+            className="absolute top-4 right-6 text-white text-2xl focus:outline-none"
+          >
+            &times;
+          </button>
+
+          {/* Mobile Menu Items */}
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col items-center gap-6 text-lg font-serif mt-8"
+          >
             <li>
               <Link
                 href="/"
                 onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                Blog Posts
+                Home
               </Link>
             </li>
             <li>
               <Link
-                href="/1"
+                href="/about"
                 onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                First Blog
+                About
               </Link>
             </li>
             <li>
               <Link
-                href="/2"
+                href="/blog/1"
                 onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                Second Blog
+                Blogs
               </Link>
             </li>
             <li>
               <Link
-                href="/3"
+                href="/contact"
                 onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
+                className="hover:text-purple-600 transition-colors duration-200"
               >
-                Third Blog
+                Contact
               </Link>
             </li>
-            <li>
-              <Link
-                href="/4"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Fourth Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/5"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Five Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/6"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Six Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/7"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Seven Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/8"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Eight Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/9"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Nine Blog
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/10"
-                onClick={closeMenu}
-                className="hover:text-yellow-300 transition-colors duration-200"
-              >
-                Ten Blog
-              </Link>
-            </li>
-          </ul>
-        </nav>
+          </motion.ul>
+        </motion.nav>
       )}
     </header>
   );
 };
 
 export default Header;
+
+
+
+
+
+
+
+
+
+
